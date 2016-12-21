@@ -9,8 +9,8 @@ import structure.User;
 public class ProgramaImpl extends Programa {
   User user = new User();
   Computer comp = new Computer();
-  public static int x;
-  public static int y;
+  public static int x = -1;
+  public static int y = -1;
 
   @Override
   public boolean userIsFirst() {
@@ -21,7 +21,6 @@ public class ProgramaImpl extends Programa {
     } else {
       return false;
     }
-
   }
 
   @Override
@@ -74,20 +73,34 @@ public class ProgramaImpl extends Programa {
   }
 
   public void playProgram() {
-    if (DbImpl.matrix[2][0] == 0) {
-      // first way
+    if (x == -1 && y == -1) { // first step
       DbImpl.matrix[2][0] = comp.getSymbol();
-    } else if (DbImpl.matrix[1][1] == 0) {
-      DbImpl.matrix[1][1] = comp.getSymbol();
+    } else {
+      if (x == 2 && y == 0) {
+        DbImpl.matrix[1][1] = comp.getSymbol();
 
-    } else if (x == 0 && y == 2) {
-      DbImpl.matrix[0][0] = comp.getSymbol();
+      } else if (DbImpl.matrix[1][1] == comp.getSymbol() && DbImpl.matrix[0][2] == user.getSymbol()) {
+        DbImpl.matrix[2][1] = comp.getSymbol();
 
-    } else if (x == 0 && y == 0 && DbImpl.matrix[1][1] == 0) {
-      DbImpl.matrix[2][2] = comp.getSymbol();
+      } else if (DbImpl.matrix[2][0] == user.getSymbol() && DbImpl.matrix[1][0] == user.getSymbol()) {
+        DbImpl.matrix[0][0] = comp.getSymbol();
 
-    } else if (x == 1 && y == 0) {
-      DbImpl.matrix[2][2] = comp.getSymbol();
+      } else if (DbImpl.matrix[2][0] == user.getSymbol() && DbImpl.matrix[2][1] == user.getSymbol()) {
+        DbImpl.matrix[2][2] = comp.getSymbol();
+        // test code
+      } else if (DbImpl.matrix[2][1] == comp.getSymbol() && DbImpl.matrix[1][1] == comp.getSymbol()) {
+        DbImpl.matrix[0][1] = comp.getSymbol();
+
+      } else if (DbImpl.matrix[0][2] == user.getSymbol() && DbImpl.matrix[0][1] == user.getSymbol()
+          && DbImpl.matrix[0][0] == 0) {
+        DbImpl.matrix[0][0] = comp.getSymbol();
+      } else {
+
+        if (DbImpl.matrix[2][0] == 0) {
+          DbImpl.matrix[2][0] = comp.getSymbol();
+        }
+      }
+
     }
 
   }

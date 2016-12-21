@@ -1,7 +1,7 @@
 package structure;
 
-public abstract class Computer {
+public class Computer extends Player {
 
-  abstract void generateCoordinate();
+  // abstract void generateCoordinate();
 
 }

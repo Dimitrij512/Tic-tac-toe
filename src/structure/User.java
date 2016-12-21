@@ -1,6 +1,6 @@
 package structure;
 
-public abstract class User extends Player {
+public class User extends Player {
   private int x;
   private int y;
 
@@ -19,9 +19,5 @@ public abstract class User extends Player {
   public void setY(int y) {
     this.y = y;
   }
-
-  abstract void input(int x, int y);
-
-  abstract public void endGame();
 
 }

@@ -1,14 +1,15 @@
 package structure;
 
 public abstract class Programa {
-  public abstract void win();
+
+  public abstract boolean userIsFirst();
+
+  public abstract void checkWon();
 
   public abstract void countBonus();
 
-  public abstract void shooseStart();
+  public abstract void determineSymbol();
 
-  public abstract void checkStep();
-
-  public abstract void shooseSymbol();
+  public abstract boolean isFreePlace(int x, int y);
 
 }

@@ -3,7 +3,7 @@ package game;
 import structure.DB;
 
 public class DbImpl extends DB {
-  char[][] matrix = new char[3][3];
+  public static char[][] matrix = new char[3][3];
 
   public char[][] getMatrix() {
     return matrix;

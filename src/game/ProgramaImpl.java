@@ -73,34 +73,218 @@ public class ProgramaImpl extends Programa {
   }
 
   public void playProgram() {
-    if (x == -1 && y == -1) { // first step
+
+    // checkHorizontal in right
+    if (DbImpl.matrix[0][0] == comp.getSymbol() && DbImpl.matrix[0][1] == comp.getSymbol()
+        && DbImpl.matrix[0][2] == 0) {
+      DbImpl.matrix[0][2] = comp.getSymbol();
+
+    } else if (DbImpl.matrix[1][0] == comp.getSymbol() && DbImpl.matrix[1][1] == comp.getSymbol()
+        && DbImpl.matrix[1][2] == 0) {
+      DbImpl.matrix[1][2] = comp.getSymbol();
+
+    } else if (DbImpl.matrix[2][0] == comp.getSymbol() && DbImpl.matrix[2][1] == comp.getSymbol()
+        && DbImpl.matrix[2][2] == 0) {
+      DbImpl.matrix[2][2] = comp.getSymbol();
+      // checkHorizontal in left
+    } else if (DbImpl.matrix[0][2] == comp.getSymbol() && DbImpl.matrix[0][1] == comp.getSymbol()
+        && DbImpl.matrix[0][0] == 0) {
+      DbImpl.matrix[0][0] = comp.getSymbol();
+
+    } else if (DbImpl.matrix[1][2] == comp.getSymbol() && DbImpl.matrix[1][1] == comp.getSymbol()
+        && DbImpl.matrix[1][0] == 0) {
+      DbImpl.matrix[1][0] = comp.getSymbol();
+    } else if (DbImpl.matrix[2][2] == comp.getSymbol() && DbImpl.matrix[2][1] == comp.getSymbol()
+        && DbImpl.matrix[2][0] == 0) {
       DbImpl.matrix[2][0] = comp.getSymbol();
-    } else {
-      if (x == 2 && y == 0) {
-        DbImpl.matrix[1][1] = comp.getSymbol();
+    } // check vertical high
+    else if (DbImpl.matrix[2][0] == comp.getSymbol() && DbImpl.matrix[1][0] == comp.getSymbol()
+        && DbImpl.matrix[0][0] == 0) {
+      DbImpl.matrix[0][0] = comp.getSymbol();
 
-      } else if (DbImpl.matrix[1][1] == comp.getSymbol() && DbImpl.matrix[0][2] == user.getSymbol()) {
-        DbImpl.matrix[2][1] = comp.getSymbol();
+    } else if (DbImpl.matrix[2][1] == comp.getSymbol() && DbImpl.matrix[1][1] == comp.getSymbol()
+        && DbImpl.matrix[0][1] == 0) {
+      DbImpl.matrix[0][1] = comp.getSymbol();
+    } else if (DbImpl.matrix[2][2] == comp.getSymbol() && DbImpl.matrix[1][2] == comp.getSymbol()
+        && DbImpl.matrix[0][2] == 0) {
+      DbImpl.matrix[0][2] = comp.getSymbol();
+    } // check vertical bottom
 
-      } else if (DbImpl.matrix[2][0] == user.getSymbol() && DbImpl.matrix[1][0] == user.getSymbol()) {
-        DbImpl.matrix[0][0] = comp.getSymbol();
+    else if (DbImpl.matrix[0][0] == comp.getSymbol() && DbImpl.matrix[1][0] == comp.getSymbol()
+        && DbImpl.matrix[2][0] == 0) {
+      DbImpl.matrix[2][0] = comp.getSymbol();
+    } else if (DbImpl.matrix[0][1] == comp.getSymbol() && DbImpl.matrix[1][1] == comp.getSymbol()
+        && DbImpl.matrix[2][1] == 0) {
+      DbImpl.matrix[2][1] = comp.getSymbol();
+    } else if (DbImpl.matrix[0][2] == comp.getSymbol() && DbImpl.matrix[1][2] == comp.getSymbol()
+        && DbImpl.matrix[2][2] == 0) {
+      DbImpl.matrix[2][2] = comp.getSymbol();
+    } // check diagonal bottom
 
-      } else if (DbImpl.matrix[2][0] == user.getSymbol() && DbImpl.matrix[2][1] == user.getSymbol()) {
-        DbImpl.matrix[2][2] = comp.getSymbol();
-        // test code
-      } else if (DbImpl.matrix[2][1] == comp.getSymbol() && DbImpl.matrix[1][1] == comp.getSymbol()) {
-        DbImpl.matrix[0][1] = comp.getSymbol();
+    else if (DbImpl.matrix[0][2] == comp.getSymbol() && DbImpl.matrix[1][1] == comp.getSymbol()
+        && DbImpl.matrix[2][0] == 0) {
+      DbImpl.matrix[2][0] = comp.getSymbol();
+    } else if (DbImpl.matrix[0][0] == user.getSymbol() && DbImpl.matrix[1][1] == user.getSymbol()
+        && DbImpl.matrix[2][2] == 0) {
+      DbImpl.matrix[2][2] = comp.getSymbol();
+    }
 
-      } else if (DbImpl.matrix[0][2] == user.getSymbol() && DbImpl.matrix[0][1] == user.getSymbol()
-          && DbImpl.matrix[0][0] == 0) {
-        DbImpl.matrix[0][0] = comp.getSymbol();
-      } else {
+    // check diagonal high
+    else if (DbImpl.matrix[2][0] == comp.getSymbol() && DbImpl.matrix[1][1] == comp.getSymbol()
+        && DbImpl.matrix[0][2] == 0) {
+      DbImpl.matrix[0][2] = comp.getSymbol();
+    } else if (DbImpl.matrix[2][2] == comp.getSymbol() && DbImpl.matrix[1][1] == comp.getSymbol()
+        && DbImpl.matrix[0][0] == 0) {
+      DbImpl.matrix[0][0] = comp.getSymbol();
 
-        if (DbImpl.matrix[2][0] == 0) {
-          DbImpl.matrix[2][0] = comp.getSymbol();
-        }
-      }
+      // check center vertical
+    } else if (DbImpl.matrix[0][0] == comp.getSymbol() && DbImpl.matrix[2][0] == comp.getSymbol()
+        && DbImpl.matrix[1][0] == 0) {
+      DbImpl.matrix[1][0] = comp.getSymbol();
+    } else if (DbImpl.matrix[0][1] == comp.getSymbol() && DbImpl.matrix[2][1] == comp.getSymbol()
+        && DbImpl.matrix[1][1] == 0) {
+      DbImpl.matrix[1][1] = comp.getSymbol();
+    } else if (DbImpl.matrix[0][2] == comp.getSymbol() && DbImpl.matrix[2][2] == comp.getSymbol()
+        && DbImpl.matrix[1][2] == 0) {
+      DbImpl.matrix[1][2] = comp.getSymbol();
 
+      // check center horisontal
+    } else if (DbImpl.matrix[0][0] == comp.getSymbol() && DbImpl.matrix[0][2] == comp.getSymbol()
+        && DbImpl.matrix[0][1] == 0) {
+      DbImpl.matrix[0][1] = comp.getSymbol();
+    } else if (DbImpl.matrix[1][0] == comp.getSymbol() && DbImpl.matrix[1][2] == comp.getSymbol()
+        && DbImpl.matrix[1][1] == 0) {
+      DbImpl.matrix[1][1] = comp.getSymbol();
+    } else if (DbImpl.matrix[2][0] == comp.getSymbol() && DbImpl.matrix[2][2] == comp.getSymbol()
+        && DbImpl.matrix[2][1] == 0) {
+      DbImpl.matrix[2][1] = comp.getSymbol();
+
+    }
+    // check diagonal ceneter
+    else if (DbImpl.matrix[0][0] == comp.getSymbol() && DbImpl.matrix[2][2] == comp.getSymbol()
+        && DbImpl.matrix[1][1] == 0) {
+      DbImpl.matrix[1][1] = comp.getSymbol();
+    } else if (DbImpl.matrix[0][2] == comp.getSymbol() && DbImpl.matrix[2][0] == comp.getSymbol()
+        && DbImpl.matrix[1][1] == 0) {
+      DbImpl.matrix[1][1] = comp.getSymbol();
+    }
+    // --------------------------------------------------------------------------------------------------
+    // checkHorizontal in right
+    if (DbImpl.matrix[0][0] == user.getSymbol() && DbImpl.matrix[0][1] == user.getSymbol()
+        && DbImpl.matrix[0][2] == 0) {
+      DbImpl.matrix[0][2] = comp.getSymbol();
+
+    } else if (DbImpl.matrix[1][0] == user.getSymbol() && DbImpl.matrix[1][1] == user.getSymbol()
+        && DbImpl.matrix[1][2] == 0) {
+      DbImpl.matrix[1][2] = comp.getSymbol();
+
+    } else if (DbImpl.matrix[2][0] == user.getSymbol() && DbImpl.matrix[2][1] == user.getSymbol()
+        && DbImpl.matrix[2][2] == 0) {
+      DbImpl.matrix[2][2] = comp.getSymbol();
+      // checkHorizontal in left
+    } else if (DbImpl.matrix[0][2] == user.getSymbol() && DbImpl.matrix[0][1] == user.getSymbol()
+        && DbImpl.matrix[0][0] == 0) {
+      DbImpl.matrix[0][0] = comp.getSymbol();
+
+    } else if (DbImpl.matrix[1][2] == user.getSymbol() && DbImpl.matrix[1][1] == user.getSymbol()
+        && DbImpl.matrix[1][0] == 0) {
+      DbImpl.matrix[1][0] = comp.getSymbol();
+    } else if (DbImpl.matrix[2][2] == user.getSymbol() && DbImpl.matrix[2][1] == user.getSymbol()
+        && DbImpl.matrix[2][0] == 0) {
+      DbImpl.matrix[2][0] = comp.getSymbol();
+    } // check vertical high
+    else if (DbImpl.matrix[2][0] == user.getSymbol() && DbImpl.matrix[1][0] == user.getSymbol()
+        && DbImpl.matrix[0][0] == 0) {
+      DbImpl.matrix[0][0] = comp.getSymbol();
+
+    } else if (DbImpl.matrix[2][1] == user.getSymbol() && DbImpl.matrix[1][1] == user.getSymbol()
+        && DbImpl.matrix[0][1] == 0) {
+      DbImpl.matrix[0][1] = comp.getSymbol();
+    } else if (DbImpl.matrix[2][2] == user.getSymbol() && DbImpl.matrix[1][2] == user.getSymbol()
+        && DbImpl.matrix[0][2] == 0) {
+      DbImpl.matrix[0][2] = comp.getSymbol();
+    } // check vertical bottom
+
+    else if (DbImpl.matrix[0][0] == user.getSymbol() && DbImpl.matrix[1][0] == user.getSymbol()
+        && DbImpl.matrix[2][0] == 0) {
+      DbImpl.matrix[2][0] = comp.getSymbol();
+    } else if (DbImpl.matrix[0][1] == user.getSymbol() && DbImpl.matrix[1][1] == user.getSymbol()
+        && DbImpl.matrix[2][1] == 0) {
+      DbImpl.matrix[2][1] = comp.getSymbol();
+    } else if (DbImpl.matrix[0][2] == user.getSymbol() && DbImpl.matrix[1][2] == user.getSymbol()
+        && DbImpl.matrix[2][2] == 0) {
+      DbImpl.matrix[2][2] = comp.getSymbol();
+    }
+    // check diagonal bottom
+    else if (DbImpl.matrix[0][2] == user.getSymbol() && DbImpl.matrix[1][1] == user.getSymbol()
+        && DbImpl.matrix[2][0] == 0) {
+      DbImpl.matrix[2][0] = comp.getSymbol();
+    } else if (DbImpl.matrix[0][0] == comp.getSymbol() && DbImpl.matrix[1][1] == comp.getSymbol()
+        && DbImpl.matrix[2][2] == 0) {
+      DbImpl.matrix[2][2] = comp.getSymbol();
+    }
+    // check diagonal high
+    else if (DbImpl.matrix[2][0] == user.getSymbol() && DbImpl.matrix[1][1] == user.getSymbol()
+        && DbImpl.matrix[0][2] == 0) {
+      DbImpl.matrix[0][2] = comp.getSymbol();
+    } else if (DbImpl.matrix[2][2] == user.getSymbol() && DbImpl.matrix[1][1] == user.getSymbol()
+        && DbImpl.matrix[0][0] == 0) {
+      DbImpl.matrix[0][0] = comp.getSymbol();
+      // check diagonal center
+    } else if (DbImpl.matrix[0][0] == user.getSymbol() && DbImpl.matrix[2][2] == user.getSymbol()
+        && DbImpl.matrix[1][1] == 0) {
+      DbImpl.matrix[1][1] = comp.getSymbol();
+    } else if (DbImpl.matrix[0][2] == user.getSymbol() && DbImpl.matrix[2][0] == user.getSymbol()
+        && DbImpl.matrix[1][1] == 0) {
+      DbImpl.matrix[1][1] = comp.getSymbol();
+      // check center vertical
+    } else if (DbImpl.matrix[0][0] == user.getSymbol() && DbImpl.matrix[2][0] == user.getSymbol()
+        && DbImpl.matrix[1][0] == 0) {
+      DbImpl.matrix[1][0] = comp.getSymbol();
+    } else if (DbImpl.matrix[0][1] == user.getSymbol() && DbImpl.matrix[2][1] == user.getSymbol()
+        && DbImpl.matrix[1][1] == 0) {
+      DbImpl.matrix[1][1] = comp.getSymbol();
+    } else if (DbImpl.matrix[0][2] == user.getSymbol() && DbImpl.matrix[2][2] == user.getSymbol()
+        && DbImpl.matrix[2][1] == 0) {
+      DbImpl.matrix[2][1] = comp.getSymbol();
+
+      // check center horisontal
+    } else if (DbImpl.matrix[0][0] == user.getSymbol() && DbImpl.matrix[0][2] == user.getSymbol()
+        && DbImpl.matrix[0][1] == 0) {
+      DbImpl.matrix[0][1] = comp.getSymbol();
+    } else if (DbImpl.matrix[1][0] == user.getSymbol() && DbImpl.matrix[1][2] == user.getSymbol()
+        && DbImpl.matrix[1][1] == 0) {
+      DbImpl.matrix[1][1] = comp.getSymbol();
+    } else if (DbImpl.matrix[2][0] == user.getSymbol() && DbImpl.matrix[2][2] == user.getSymbol()
+        && DbImpl.matrix[2][1] == 0) {
+      DbImpl.matrix[2][1] = comp.getSymbol();
+
+      // play game
+    } else if (x == -1 && y == -1) { // first step
+      DbImpl.matrix[2][0] = comp.getSymbol();
+
+    } else if (x == 2 && y == 0) {
+      DbImpl.matrix[1][1] = comp.getSymbol();
+
+    } else if (x != -1 && y != -1 && DbImpl.matrix[2][0] == 0) {
+      DbImpl.matrix[2][0] = comp.getSymbol();
+
+    } else if (DbImpl.matrix[2][0] == comp.getSymbol() && DbImpl.matrix[2][2] == 0) {
+      DbImpl.matrix[2][2] = comp.getSymbol();
+
+      // } else if (DbImpl.matrix[0][2] == 0) {
+      // DbImpl.matrix[0][2] = comp.getSymbol();
+
+      // } else if (DbImpl.matrix[2][0] == comp.getSymbol() &&
+      // DbImpl.matrix[2][2] == comp.getSymbol()
+      // && DbImpl.matrix[0][2] == comp.getSymbol() && DbImpl.matrix[1][2] == 0)
+      // {
+      // DbImpl.matrix[1][2] = comp.getSymbol();
+      // } else if (DbImpl.matrix[2][0] == comp.getSymbol() &&
+      // DbImpl.matrix[2][2] == comp.getSymbol()
+      // && DbImpl.matrix[0][2] == comp.getSymbol() && DbImpl.matrix[1][1] == 0)
+      // {
+      // DbImpl.matrix[1][1] = comp.getSymbol();
     }
 
   }
